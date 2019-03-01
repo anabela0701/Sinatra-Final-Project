@@ -8,8 +8,8 @@ moods = {
     "sad" => ["Drama", "Romantic Comedy"],
     "angry" => ["Thriller", "Mystery", "Horror"],
     "excited" => ["Animation", "Kids", "Comedy"],
-    "fear" => ["Horror"],
-    "bored" => []
+    "fear" => ["Horror", "Comedy"],
+    "bored" => ["Comedy", "Action", "Thriller"]
 }
 
 set_api_key(ENV["PARALLEL_API"])
