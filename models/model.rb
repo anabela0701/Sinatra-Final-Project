@@ -4,11 +4,12 @@ require 'paralleldots'
 # Is is only running locally?
 
 moods = {
-    :happy => ["Comedy", "Adventure", "Action"],
-    :sad => ["Drama", "Romantic Comedy"],
-    :angry => ["Thriller", "Mystery", "Horror"],
-    :love => ["Romance, Romantic Comedy"],
-    :fear => ["Horror"]
+    "happy" => ["Comedy", "Adventure", "Action"],
+    "sad" => ["Drama", "Romantic Comedy"],
+    "angry" => ["Thriller", "Mystery", "Horror"],
+    "excited" => ["Animation", "Kids", "Comedy"],
+    "fear" => ["Horror"],
+    "bored" => []
 }
 
 set_api_key(ENV["PARALLEL_API"])
@@ -19,3 +20,13 @@ def get_mood(mood)
     @user_mood["emotion"]["emotion"]
 end
 # puts get_mood("happy")
+
+def genres(moods_hash)
+    moods_hash.each do |mood,moods|
+        if mood == @user_mood.downcase
+            return moods
+        end
+    end
+end
+# @user_mood = "happy"
+# puts genres(moods)

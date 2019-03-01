@@ -1,5 +1,6 @@
 require 'dotenv/load'
 require 'bundler'
+require 'paralleldots'
 Bundler.require
 
 require_relative 'models/model.rb'
