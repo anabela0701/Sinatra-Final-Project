@@ -5,6 +5,7 @@ GEM
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.6.0)
+<<<<<<< HEAD
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     method_source (0.8.2)
@@ -14,6 +15,20 @@ GEM
       parseconfig (~> 1.0, >= 1.0.8)
       rest-client (~> 1.8, >= 1.8.0)
     parseconfig (1.0.8)
+=======
+    httparty (0.16.4)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
+    klass_param (0.3.0)
+    method_source (0.8.2)
+    mime-types (3.2.2)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2018.0812)
+    multi_xml (0.6.0)
+    omdb-api (1.1.0)
+      httparty
+      klass_param
+>>>>>>> 975de0be594b914b5a679fc54e791bd94aba0159
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -42,7 +57,11 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
+<<<<<<< HEAD
   paralleldots
+=======
+  omdb-api
+>>>>>>> 975de0be594b914b5a679fc54e791bd94aba0159
   pry
   shotgun
   sinatra

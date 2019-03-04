@@ -1,6 +1,8 @@
 require 'dotenv/load'
 require 'bundler'
-require 'paralleldots'
+# require 'omdb/api'
+# require 'movie_list'
+# require 'paralleldots'
 Bundler.require
 
 require_relative 'models/model.rb'
@@ -15,6 +17,9 @@ class ApplicationController < Sinatra::Base
     puts params
     @user_mood = params[:mood]
     puts @user_mood
+
+    @movie_list = ['hi']
+    puts movie_list
     erb :result
   end
 end
