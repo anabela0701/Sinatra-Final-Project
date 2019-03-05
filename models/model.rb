@@ -1,4 +1,4 @@
-require 'omdb/api'
+# require 'omdb/api'
 require 'paralleldots'
 # I had to put 'gem install paralleldots' into the terminal,
 # so can everyone access the gem? What about when we deploy the app?

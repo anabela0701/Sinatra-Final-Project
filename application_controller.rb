@@ -1,7 +1,6 @@
 require 'dotenv/load'
 require 'bundler'
 # require 'omdb/api'
-# require 'movie_list'
 # require 'paralleldots'
 Bundler.require
 
