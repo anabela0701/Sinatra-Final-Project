@@ -14,12 +14,12 @@ class ApplicationController < Sinatra::Base
   end
   
   post '/result' do
-    puts params
+    # puts params
     @user_mood = params[:mood]
-    puts @user_mood
+    get_mood(@user_mood)
 
-    @movie_list = ['hi']
-    puts movie_list
+    # @movie_list = ['hi']
+    # puts movie_list
     erb :result
   end
 end
