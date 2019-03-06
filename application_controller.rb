@@ -17,6 +17,7 @@ class ApplicationController < Sinatra::Base
     # puts params
     @user_mood = params[:mood]
     get_mood(@user_mood)
+    genres($moods)
 
     # @movie_list = ['hi']
     # puts movie_list
