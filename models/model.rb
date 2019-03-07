@@ -88,5 +88,6 @@ def genres(moods_hash)
         end
     end
 end
+
 @user_mood = "sad"
 puts genres(moods)
