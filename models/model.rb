@@ -1,4 +1,8 @@
 require 'omdb/api'
+require 'paralleldots'
+require 'dotenv/load'
+require 'pp'
+
 # require 'paralleldots'
 # I had to put 'gem install paralleldots' into the terminal,
 # so can everyone access the gem? What about when we deploy the app?
@@ -59,26 +63,30 @@ end
 
 # @user_mood = 'happy'
 
-client = Omdb::Api::Client.new(api_key: ["d3d6e011"])
-# set_api_key(ENV["PARALLEL_API"])
-# get_api_key
+client = Omdb::Api::Client.new(api_key: ENV["MOVIE_API"])
 
-movie = client.find_by_id('tt3896198')
+movie = client.find_by_id('tt0083929')
 
-puts movie.plot
+# puts movie
+# pp client.search(genre = 'comedy').inspect.split('#')
+# puts movie.class
+# puts "hi".class
 
-# def get_mood(mood)
-#     @user_mood=emotion(mood)
-#     @user_mood = @user_mood["emotion"]["emotion"]
-# end
+set_api_key(ENV["PARALLEL_API"])
+get_api_key
+
+def get_mood(mood)
+    @user_mood=emotion(mood)
+    @user_mood = @user_mood["emotion"]["emotion"]
+end
 
 
-# def genres(moods_hash)
-#     moods_hash.each do |mood,moods|
-#         if mood == @user_mood.downcase
-#             @movie_list = moods
-#         end
-#     end
-# end
-# @user_mood = "sad"
-# puts genres(moods)
+def genres(moods_hash)
+    moods_hash.each do |mood,moods|
+        if mood == @user_mood.downcase
+            @movie_list = moods
+        end
+    end
+end
+@user_mood = "sad"
+puts genres(moods)
