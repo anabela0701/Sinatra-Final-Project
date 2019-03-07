@@ -4,7 +4,7 @@ require 'paralleldots'
 # so can everyone access the gem? What about when we deploy the app?
 # Is is only running locally?
 
-moods = {
+$moods = {
     "happy" => ["Comedy", "Adventure", "Action"],
     "sad" => ["Drama", "Romantic Comedy"],
     "angry" => ["Thriller", "Mystery", "Horror"],
@@ -63,16 +63,14 @@ set_api_key(ENV["PARALLEL_API"])
 
 def get_mood(mood)
     @user_mood=emotion(mood)
-    @user_mood["emotion"]["emotion"]
+    @user_mood = @user_mood["emotion"]["emotion"]
 end
 # puts get_mood("happy")
 
 def genres(moods_hash)
     moods_hash.each do |mood,moods|
         if mood == @user_mood.downcase
-            return moods
+            @movie_list = moods
         end
     end
 end
-@user_mood = "happy"
-puts genres(moods)
