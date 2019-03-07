@@ -57,7 +57,7 @@ moods = {
 # 	end
 # end
 
-@user_mood = 'happy'
+# @user_mood = 'happy'
 set_api_key(ENV["PARALLEL_API"])
 # get_api_key
 
@@ -74,5 +74,5 @@ def genres(moods_hash)
         end
     end
 end
-# @user_mood = "happy"
+@user_mood = "happy"
 puts genres(moods)
