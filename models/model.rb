@@ -8,7 +8,7 @@ require 'pp'
 # so can everyone access the gem? What about when we deploy the app?
 # Is is only running locally?
 
-$moods = {
+moods = {
     "happy" => ["Comedy", "Adventure", "Action"],
     "sad" => ["Drama", "Romantic Comedy"],
     "angry" => ["Thriller", "Mystery", "Horror"],
