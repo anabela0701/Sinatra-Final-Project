@@ -1,12 +1,7 @@
 require 'omdb/api'
 require 'paralleldots'
 require 'dotenv/load'
-require 'pp'
-
-# require 'paralleldots'
-# I had to put 'gem install paralleldots' into the terminal,
-# so can everyone access the gem? What about when we deploy the app?
-# Is is only running locally?
+# require 'pp'
 
 $moods = {
     "happy" => ["Comedy", "Adventure", "Action"],
@@ -24,7 +19,7 @@ movie_list = []
 # all start with tt
 
 def find_genre
-    moods.each do |mood,genres|
+    $moods.each do |mood,genres|
         if @user_mood == mood
             return genres
         end
@@ -61,11 +56,11 @@ def check_used_id(id)
 	end
 end
 
-# @user_mood = 'happy'
+@user_mood = 'happy'
 
 client = Omdb::Api::Client.new(api_key: ENV["MOVIE_API"])
 
-movie = client.find_by_id('tt0083929')
+# movie = client.find_by_id('tt0083929')
 
 # puts movie
 # pp client.search(genre = 'comedy').inspect.split('#')
@@ -73,7 +68,6 @@ movie = client.find_by_id('tt0083929')
 # puts "hi".class
 
 set_api_key(ENV["PARALLEL_API"])
-get_api_key
 
 def get_mood(mood)
     @user_mood=emotion(mood)
@@ -88,6 +82,3 @@ def genres(moods_hash)
         end
     end
 end
-
-@user_mood = "sad"
-puts genres(moods)
