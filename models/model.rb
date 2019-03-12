@@ -1,7 +1,7 @@
-require 'omdb/api'
 require 'paralleldots'
 require 'dotenv/load'
-# require 'pp'
+require 'json'
+require 'open-uri'
 
 $moods = {
     "happy" => ["Comedy", "Adventure", "Action"],
@@ -12,11 +12,8 @@ $moods = {
     "bored" => ["Comedy", "Action", "Thriller"]
 }
 
-used_movie_id = []
-movie_list = []
-
-# nine character in id
-# all start with tt
+id = 'tt2294629'
+json = JSON.parse(open("http://www.omdbapi.com/?i=" + id + "&apikey=d3d6e011"){ |x| x.read })
 
 def find_genre
     $moods.each do |mood,genres|
@@ -26,46 +23,11 @@ def find_genre
     end
 end
 
-def make_id
-	movie_id = []
-	movie_id.push("tt")
-	if movie_id.length <= 7
-		num = rand(9)
-		movie_id.push
-	else
-		movie_id = movie_id.join
-		check_used_id(movie_id)
-	end
+puts json
+
+json.each do |x,i|
+    puts i
 end
-
-def check_used_id(id)
-    genres = find_genre
-	used_movie_id.each do |i|
-		if i == id
-		    movie_id
-	    else
-	        movie = client.find_by_id(id)
-	        genres.each do |genre|
-	            movie.each do |movie_genre|
-	                if genre == movie_genre
-	                    movie_list.push(id)
-	                end
-	            end
-	        end
-        end
-	end
-end
-
-@user_mood = 'happy'
-
-client = Omdb::Api::Client.new(api_key: ENV["MOVIE_API"])
-
-# movie = client.find_by_id('tt0083929')
-
-# puts movie
-# pp client.search(genre = 'comedy').inspect.split('#')
-# puts movie.class
-# puts "hi".class
 
 set_api_key(ENV["PARALLEL_API"])
 
@@ -74,7 +36,6 @@ def get_mood(mood)
     @user_mood = @user_mood["emotion"]["emotion"]
 end
 
-
 def genres(moods_hash)
     moods_hash.each do |mood,moods|
         if mood == @user_mood.downcase
@@ -82,3 +43,4 @@ def genres(moods_hash)
         end
     end
 end
+
