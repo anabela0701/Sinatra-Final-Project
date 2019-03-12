@@ -1,6 +1,5 @@
 require 'dotenv/load'
 require 'bundler'
-require 'omdb/api'
 require 'paralleldots'
 Bundler.require
 
