@@ -17,8 +17,6 @@ class ApplicationController < Sinatra::Base
     get_mood(@user_mood)
     genres($moods)
 
-    # @movie_list = ['hi']
-    # puts movie_list
     erb :result
   end
 end
