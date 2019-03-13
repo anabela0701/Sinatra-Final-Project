@@ -1,11 +1,10 @@
 require 'paralleldots'
 require 'dotenv/load'
 require 'pp'
+require 'json'
+require 'open-uri'
 
-# require 'paralleldots'
-# I had to put 'gem install paralleldots' into the terminal,
-# so can everyone access the gem? What about when we deploy the app?
-# Is is only running locally?
+set_api_key(ENV["PARALLEL_API"])
 
 $moods = {
     "happy" => ["Comedy", "Adventure", "Action"],
@@ -31,7 +30,7 @@ def genres(moods_hash)
 end
 
 def get_genre_id(genre)
-    genres = JSON.parse(open('https://api.themoviedb.org/3/genre/movie/list?api_key=ced42a5bbef2973812b6167000d70905'){ |x| x.read })
+    genres = JSON.parse(open('https://api.themoviedb.org/3/genre/movie/list?api_key=' + ENV['MOVIE_API']){ |x| x.read })
     genres['genres'].each do |i|
         if genre == i['name']
             return i['id'].to_s
@@ -40,7 +39,7 @@ def get_genre_id(genre)
 end
 
 def get_movies_by_genre(genre)
-    movies = JSON.parse(open("https://api.themoviedb.org/3/discover/movie?with_genres="+ get_genre_id(genre) +"&api_key=ced42a5bbef2973812b6167000d70905"){ |x| x.read })
+    movies = JSON.parse(open("https://api.themoviedb.org/3/discover/movie?with_genres="+ get_genre_id(genre) +"&api_key=" + ENV['MOVIE_API']){ |x| x.read })
 end
 
 puts get_movies_by_genre('Comedy')
